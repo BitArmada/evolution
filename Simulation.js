@@ -5,7 +5,7 @@ class GridCell{
         this.size = size;
         this.particles = [];
         this.nearby = [];
-        this.add(new Particle(size*x+10, size*y+10));
+        // this.add(new Particle(size*x+10, size*y+10));
     }
     add(particle){
         this.particles.push(particle);
@@ -16,7 +16,7 @@ class Simulation{
     constructor(width, height){
         this.grid = [];
 
-        this.cellsize = 100;
+        this.cellsize = 500;
         this.width = Math.ceil(width/this.cellsize);
         this.height = Math.ceil(height/this.cellsize);
         this.pwidth = width;
@@ -46,8 +46,8 @@ class Simulation{
             const p = move.shift();
             const particle = p.from.particles.splice(p.from.particles.indexOf(p.particle), 1)[0];
             p.to.add(particle);
-            ctx.fillStyle = 'red';
-            ctx.fillRect(Math.floor(particle.x/this.cellsize)*this.cellsize, Math.floor(particle.y/this.cellsize)*this.cellsize, this.cellsize,this.cellsize)
+            // ctx.fillStyle = 'red';
+            // ctx.fillRect(Math.floor(particle.x/this.cellsize)*this.cellsize, Math.floor(particle.y/this.cellsize)*this.cellsize, this.cellsize,this.cellsize)
         }
 
         for(var y = 0; y < this.height; y++){
@@ -103,7 +103,7 @@ class Simulation{
 
         for(var y = 0; y < this.height; y++){
             for(var x = 0; x < this.width; x++){
-                this.grid.nearby = this.#getNearby(x, y);
+                this.grid[y][x].nearby = this.#getNearby(x, y);
             }
         }
     }
